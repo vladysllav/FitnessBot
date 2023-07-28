@@ -1,5 +1,8 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class FitnessBot:
@@ -53,6 +56,6 @@ class FitnessBot:
 
 
 if __name__ == '__main__':
-    TOKEN = "6339442727:AAEA7V9pgUX4uo80fSR4eG1PCWQwOQJF2aQ"
+    TOKEN = os.getenv("TELEGRAM_TOKEN")
     bot = FitnessBot(TOKEN)
     bot.run()
