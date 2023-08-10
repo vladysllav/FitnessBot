@@ -6,6 +6,7 @@ from user_service import UserService
 from csv_file_handler import CSVFileHandler
 
 
+
 class FitnessBot:
 
     def __init__(self, token):
