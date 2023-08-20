@@ -7,8 +7,8 @@ class UserService:
         Service which respond for all communications between users
         storing users, retrieving and so on.
     """
-    def __init__(self, handler: CSVFileHandler):
-        self.csv_file_handler = handler
+    def __init__(self):
+        self.csv_file_handler = CSVFileHandler('users.csv')
 
     def check_user_exist(self, id: int):
         pass
