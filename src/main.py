@@ -2,6 +2,8 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler
 import os
 from dotenv import load_dotenv
+from user_service import UserService
+from utils import has_emoji
 load_dotenv()
 
 
@@ -44,6 +46,22 @@ class FitnessBot:
         query = update.callback_query
         query_data = query.data
         user_type = query_data.split('_')[1]
+
+        try:
+            if query.from_user.last_name is None:
+                UserService.add_user(id=query.from_user.id,
+                                     username=query.from_user.username,
+                                     first_name=has_emoji(query.from_user.first_name),
+                                     last_name='',
+                                     user_type=user_type)
+            else:
+                UserService.add_user(id=query.from_user.id,
+                                     username=query.from_user.username,
+                                     first_name=has_emoji(query.from_user.first_name),
+                                     last_name=has_emoji(query.from_user.last_name),
+                                     user_type=user_type)
+        except Exception as e:
+            print(f"An exception occurred: {e}")
 
         if user_type == 'coach':
             coach_keyboard = [
