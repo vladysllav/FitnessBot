@@ -10,7 +10,7 @@ class UserService:
     def __init__(self):
         self.csv_file_handler = CSVFileHandler('users.csv')
 
-    def check_user_exist(self, id: int):
+    def check_user_exist(self):
         pass
 
     def get_user_by_id(self, id: int):
@@ -20,7 +20,6 @@ class UserService:
             if user['id'] == id:
                 return user
             return None
-        pass
 
     def add_user(self, id: int, username: str, first_name: str, last_name: str, user_type: str) -> None:
         csv_handler = CSVFileHandler(os.getenv("PATH_TO_DB"))

@@ -10,9 +10,7 @@ class FitnessBot:
 
     def __init__(self, token):
         self.app = Application.builder().token(token).build()
-
         self.user_service = UserService()
-
         self.app.add_handler(CommandHandler("start", self.start))
         self.app.add_handler(CallbackQueryHandler(self.handle_type_options, pattern='^type_.*$'))
         self.app.add_handler(CallbackQueryHandler(self.handle_coach_options, pattern='^coach_.*$'))
