@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 from user_service import UserService
 from csv_file_handler import CSVFileHandler
 
+load_dotenv()
+TOKEN = os.getenv("TELEGRAM_TOKEN")
+
 
 class FitnessBot:
 
@@ -85,7 +88,5 @@ class FitnessBot:
 
 
 if __name__ == '__main__':
-    load_dotenv()
-    TOKEN = os.getenv("TELEGRAM_TOKEN")
     bot = FitnessBot(TOKEN)
     bot.run()
