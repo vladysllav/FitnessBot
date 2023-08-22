@@ -16,6 +16,7 @@ __pycache__/
 # Logs and databases
 *.log
 *.sqlite3
+src/db_file.csv
 
 # Environment variables
 .env
