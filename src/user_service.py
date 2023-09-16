@@ -29,3 +29,11 @@ class UserService:
                                'last_name': last_name,
                                'user_type': user_type
                                })
+
+    def add_coach_personal_info(self, id: int, coach_personal_info: dict):
+        coach_info = {
+            'id': id,
+            **coach_personal_info,
+        }
+
+        self.csv_file_handler.write_row(coach_info)

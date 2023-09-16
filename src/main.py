@@ -64,11 +64,31 @@ class FitnessBot:
             coach_keyboard = [
                 [
                     InlineKeyboardButton("Show my athletes", callback_data='coach_show_athletes'),
-                    InlineKeyboardButton("Add workout program", callback_data='coach_add_program')
+                    InlineKeyboardButton("Add workout program", callback_data='coach_add_program'),
+                    InlineKeyboardButton("Fill personal info", callback_data='coach_fill_personal_info')
                 ]
             ]
             reply_markup = InlineKeyboardMarkup(coach_keyboard)
             await query.edit_message_text("Choose an option:", reply_markup=reply_markup)
+
+            if query_data == "coach_fill_personal_info":
+                await update.message.reply_text("Please enter your age: ")
+                coach_age = update.message.text
+
+                await update.message.reply_text("Please enter your professional experience: ")
+                coach_experience = update.message.text
+
+                await update.message.reply_text("Please enter your professional area: ")
+                coach_area = update.message.text
+
+                coach_personal_info = {
+                    'age': coach_age,
+                    'experience': coach_experience,
+                    'area': coach_area,
+                }
+
+                self.user_service.add_coach_personal_info(update.message.from_user.id, coach_personal_info)
+
         elif user_type == 'athlete':
             athlete_keyboard = [
                 [
