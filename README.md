@@ -42,7 +42,7 @@ This bot is built in Python and integrated with the Telegram Bot API.
    if installed, execute
 
    ```shell
-   cd FitnessBot/src/ poerty install
+   cd FitnessBot/src/ poetry install
    ```
 
    if not installed, execute
@@ -72,7 +72,7 @@ Try running:
    and 
 
    ```shell
-   cd FitnessBot/src/ poerty install
+   cd FitnessBot/src/ poety install
    ``` 
 
 3. Create a `.env` file based on the `.env.example` file:
