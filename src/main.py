@@ -6,6 +6,29 @@ from user_service import UserService
 from csv_file_handler import CSVFileHandler
 
 
+from .db import engine, SessionLocal
+from .models import Base, User
+from sqlalchemy.orm import Session  # Import Session
+
+Base.metadata.create_all(bind=engine)
+
+
+"""
+example of a function to create a user
+
+def create_user(username: str, email: str):
+    db = SessionLocal()
+    db_user = User(username=username, email=email)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    db.close()
+    return db_user
+"""
+
+
+
+
 load_dotenv()
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 
